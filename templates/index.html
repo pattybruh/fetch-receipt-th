@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 2em;
+        }
+        label, select, button {
+            font-size: 1rem;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 1em;
+            background-color: white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict Receipt Counts for a Month in 2022</h1>
+
+    <form method="post">
+        <label for="month">Select a month:</label>
+        <select name="month" id="month">
+            {% for month in months %}
+                <option value="{{ month }}">{{ month }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Enter</button>
+    </form>
+
+    {% if prediction_result %}
+        <h2>Predictions for {{ request.form['month'] }} 2022</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Predicted Receipt Count</th>
+            </tr>
+            {% for date, count in prediction_result %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
