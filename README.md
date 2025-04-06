@@ -2,6 +2,12 @@
 
 Flask take home assignment that predicts receipt counts for each month of 2022
 
+# Project layout
+
+model.ipynb is the jupyter notebook for developing the model (model.ipynb)\
+app.py is the flask app for the webserver\
+templates/index.html is the website layout\
+
 ## Run
 
 1. Clone the repository with
